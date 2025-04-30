@@ -1,13 +1,9 @@
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import {
   ChevronLeft,
-  ChevronRight,
-  DollarSign,
-  MapPin,
+  ChevronRight
 } from "lucide-react";
-import React from "react";
+import { icons } from "../../../public";
 
 export default function EventInfoSection() {
   // Event data for mapping
@@ -15,7 +11,7 @@ export default function EventInfoSection() {
     {
       id: 1,
       title: "Legends Rise on the Field",
-      image: "/date-drop-down-box.png",
+      image: icons.s1.src,
       date: "Thu, Dec 5",
       time: "12.30AM - 12.30PM",
       location: "Bashundhara Sports Complex",
@@ -28,7 +24,7 @@ export default function EventInfoSection() {
     {
       id: 2,
       title: "Chasing Glory: Football Showdown",
-      image: "/date-drop-down-box-2.png",
+      image: icons.s2.src,
       date: "Thu, Dec 5",
       time: "12.30AM - 12.30PM",
       location: "Bashundhara Sports Complex",
@@ -41,7 +37,7 @@ export default function EventInfoSection() {
     {
       id: 3,
       title: "United We Play, United Win",
-      image: "/date-drop-down-box-3.png",
+      image: icons.s3.src,
       date: "Thu, Dec 5",
       time: "12.30AM - 12.30PM",
       location: "Bashundhara Sports Complex",
@@ -72,117 +68,105 @@ export default function EventInfoSection() {
 
   return (
     <section className="w-full gap-2.5 p-10 bg-variable-collection-main-BG-solid-white flex flex-col">
-      <div className="gap-3 w-full flex flex-col">
-        <header className="flex items-center justify-between py-3">
-          <h2 className="font-bold text-[#261b36] text-2xl leading-8">
-            Other events you may like
-          </h2>
+      <div className=" w-[1440px] mx-auto px-10">
+        <div className="gap-3 w-full flex flex-col">
+          <header className="flex items-center justify-between py-3">
+            <h2 className="font-s-bold text-[#261b36] text-2xl leading-8">
+              Other events you may like
+            </h2>
 
-          <div className="flex items-center gap-4">
-            <Button
-              variant="ghost"
-              size="icon"
-              className="w-12 h-12 bg-variable-collection-BG-2-light-yellow rounded-full flex items-center justify-center"
-            >
-              <ChevronLeft className="w-6 h-6" />
-            </Button>
+            <div className="flex items-center gap-4">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="w-12 h-12 bg-variable-collection-BG-2-light-yellow rounded-full flex items-center justify-center"
+              >
+                <ChevronLeft className="w-6 h-6" />
+              </Button>
 
-            <Button
-              variant="ghost"
-              size="icon"
-              className="w-12 h-12 bg-variable-collection-BG-2-light-yellow rounded-full flex items-center justify-center"
-            >
-              <ChevronRight className="w-6 h-6" />
-            </Button>
-          </div>
-        </header>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="w-12 h-12 bg-variable-collection-BG-2-light-yellow rounded-full flex items-center justify-center"
+              >
+                <ChevronRight className="w-6 h-6" />
+              </Button>
+            </div>
+          </header>
 
-        <div className="flex items-center gap-4 w-full">
-          {events.map((event) => (
-            <Card
-              key={event.id}
-              className="flex-1 rounded-[30px] overflow-hidden border-[1.25px] border-variable-collection-deep-light-gray-stroke"
-            >
-              <div
-                className="w-full h-[116px] bg-cover bg-center"
-                style={{ backgroundImage: `url(${event.image})` }}
-              />
-
-              <CardContent className="flex flex-col h-[218px] gap-1 p-4 bg-white">
-                <div className="flex items-center justify-between w-full">
-                  <div className="flex items-center gap-1">
-                    <Badge className="px-2.5 py-2 bg-[#d9f2e6] text-[#494949] rounded-3xl font-normal text-xs">
-                      {event.tags[0]}
-                    </Badge>
-                    <Badge className="px-2.5 py-2 bg-[#efedff] text-[#494949] rounded-3xl font-normal text-xs">
-                      {event.tags[1]}
-                    </Badge>
-                  </div>
-
-                  <SkillLevelIndicator />
+          <div className="flex items-center gap-4 w-full">
+            {events.map((event, index) => (
+              <div key={index} className="w-full  rounded-[30px] border border-neutral-200 flex flex-col overflow-hidden">
+                {/* Image Section */}
+                <div className="relative w-full h-[116px]">
+                  <img
+                    src={event.image}
+                    alt="Event Image"
+                    className="object-cover"
+                  />
                 </div>
 
-                <div className="flex flex-col justify-between flex-1 w-full">
-                  <div className="flex flex-col gap-1 w-full">
-                    <h3 className="font-medium text-variable-collection-secondary-pure-green text-2xl leading-normal overflow-hidden text-ellipsis line-clamp-1">
-                      {event.title}
-                    </h3>
-
-                    <div className="flex flex-col w-full">
-                      <div className="flex items-center gap-[5px] w-full">
-                        <div className="flex items-center gap-2.5">
-                          <span className="font-normal text-neutral-900 text-sm">
-                            {event.date}
-                          </span>
-                          <div className="w-[2.5px] h-[2.5px] bg-neutral-900 rounded-[1.25px]" />
-                          <span className="font-normal text-neutral-900 text-sm">
-                            {event.time}
-                          </span>
-                        </div>
-                      </div>
-
-                      <div className="flex items-center gap-[5px] w-full">
-                        <MapPin className="w-[17.5px] h-[17.5px]" />
-                        <span className="font-normal text-neutral-900 text-sm">
-                          {event.location}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="flex flex-col items-end justify-center w-full">
-                    <div className="flex items-end justify-between w-full">
-                      <span className="font-normal text-neutral-900 text-sm">
-                        {event.attending}
+                {/* Content Section */}
+                <div className="flex-1 p-4 bg-white flex flex-col gap-2 ">
+                  {/* Tags and Level */}
+                  <div className="flex justify-between items-center">
+                    <div className="flex gap-2">
+                      <span className="px-2.5 py-1 h-[25px] bg-[#d9f2e6] rounded-full text-[#494949] text-xs font-medium ">
+                        Football
                       </span>
+                      <span className="px-2.5 py-1 h-[25px] bg-[#efedff] rounded-full text-[#494949] text-xs font-medium">
+                        Below 25y
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-[6px]">
+                      {/* Signal Bars (Fixed Width Issue) */}
+                      <div className="flex items-end gap-[1px]">
+                        <div className="w-1 h-1 bg-[#63cfa0]" />
+                        <div className="w-1 h-2 bg-[#63cfa0]" />
+                        <div className="w-1 h-3 bg-[#63cfa0]" />
+                        <div className="w-1 h-4 bg-[#63cfa0]" />
+                      </div>
+                      <span className="text-[#494949] text-xs font-normal   leading-tight">Advanced</span>
+                    </div>
+                  </div>
 
-                      <div className="flex flex-col items-end justify-center gap-1">
-                        <span className="font-normal text-[#aa3333] text-sm">
-                          {event.spotsLeft}
+                  {/* Event Details */}
+                  <div className="flex flex-col gap-1">
+                    <h2 className="text-2xl font-medium font-s-medium text-[#34735f]">
+                      {event.title}
+                    </h2>
+                    <div className="flex items-center gap-1 text-sm text-neutral-900">
+                      <span>{event.date}</span>
+                      <span className="size-[2.50px] bg-neutral-900 rounded-full" />
+                      <span>{event.time}</span>
+                    </div>
+                    <div className="flex items-center gap-[8.65] text-sm text-neutral-900">
+                      <img src={icons.location.src} className="" />
+                      <span>{event.location}</span>
+                    </div>
+                  </div>
+
+                  {/* Footer Section */}
+                  <div className="mt-auto flex justify-between items-end">
+                    <span className="text-sm text-neutral-900">6/8 attending</span>
+                    <div className="flex flex-col items-end gap-1">
+                      <span className="text-sm text-[#aa3333] font-medium">2 spots left</span>
+                      <div className="flex items-center gap-1">
+                        <img src={icons.taka.src} className="size-[18px]"></img>
+                        <span className="text-2xl text-neutral-900">
+                          320
+                          <span className="text-lg text-[#808080]">/person</span>
                         </span>
-
-                        <div className="flex items-center gap-0.5">
-                          <DollarSign className="w-[26px] h-[26px]" />
-                          <div className="flex items-center">
-                            <div className="font-normal text-2xl">
-                              <span className="text-neutral-900">
-                                {event.price}
-                              </span>
-                              <span className="text-[#808080] text-lg">
-                                /person
-                              </span>
-                            </div>
-                          </div>
-                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </CardContent>
-            </Card>
-          ))}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
+
     </section>
   );
 }

@@ -9,55 +9,7 @@ import { icons } from "../../../public";
 import Info from "./info";
 
 export default function EventDetailsSection() {
-  // Event details data
-  const eventData = {
-    title: "Road to the Football Finals",
-    location: "Bashundhara Sports Complex",
-    dateTime: "Mar 14 from 7:30 PM - 9:30 PM",
-    tags: [
-      { name: "Football", bgColor: "bg-[#e6f8f8]" },
-      { name: "Relay", bgColor: "bg-variable-collection-swimming" },
-      { name: "Female", bgColor: "bg-[#ffe7ef]" },
-      { name: "Age: Below 25", bgColor: "bg-[#efedff]" },
-    ],
-    about:
-      "Learn about the capital's first beavers in 400 years from the Ealing Beaver project, make your own\nmushroom growing starter kit with urban agriculture experts, before joining Roma the Engineer to get\ninto the nuts and bolts of tomorrow's high-rise buildings.",
-    location_details: {
-      name: "NDE Field",
-      address:
-        "Jean Baptiste Point du Sable Lake Shore Drive, Chicago, Illinois",
-    },
-    highlights: [
-      { icon: <Calendar className="w-[18px] h-[18px]" />, text: "Mon, 2 Dec" },
-      {
-        icon: <Clock className="w-[18px] h-[18px]" />,
-        text: "7.30 AM - 8.30 AM",
-      },
-      {
-        icon: <ImageIcon className="w-[18px] h-[18px]" />,
-        text: "Arrive 15 min before start",
-      },
-      {
-        icon: <Users className="w-[18px] h-[18px] -rotate-90" />,
-        text: "Venue booked",
-      },
-    ],
-    refundPolicy: [
-      "Full refund if host cancels the game",
-      "Full refund if you cancel 24+ hours in advance",
-      "Full refund if game is cancelled due to low attendance",
-    ],
-    host: {
-      name: "Alex Mercer",
-      activitiesHosted: 23,
-      rating: 4.5,
-    },
-    booking: {
-      spotsLeft: 6,
-      price: "320tk /player",
-      priceNote: "(both)",
-    },
-  };
+
 
   return (
     <div className="flex flex-col items-start gap-2.5 pt-10 pb-0   relative self-stretch w-full">

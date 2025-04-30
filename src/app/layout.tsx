@@ -21,10 +21,8 @@ export default function RootLayout({
         className={`font-s-regular antialiased`}
       >
         <Navbar />
-        <div className="w-[1440px] mx-auto px-[40px]">
-          {children}
+        {children}
 
-        </div>
       </body>
     </html>
   );

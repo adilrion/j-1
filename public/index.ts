@@ -14,6 +14,12 @@ import venue from "./venue.svg";
 
 
 import man from './man.png'
+import location from './location.svg'
+import taka from './taka.svg'
+
+import s1 from './s-1.png'
+import s2 from './s2.png'
+import s3 from './s3.png'
 
 export const icons = {
     logo,
@@ -27,5 +33,10 @@ export const icons = {
     calender2,
     clock,
     venue,
-    man
+    man,
+    location,
+    s1,
+    s2,
+    s3,
+    taka,
 };

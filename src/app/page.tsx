@@ -9,8 +9,9 @@ export default function Home() {
       data-model-id="1:396"
     >
       {/* <EventImageGallerySection /> */}
-
-      <EventDetailsSection />
+      <div className="w-[1440px] mx-auto px-[40px]">
+        <EventDetailsSection />
+      </div>
 
       <EventInfoSection />
     </div>
