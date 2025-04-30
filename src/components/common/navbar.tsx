@@ -186,14 +186,14 @@ export const Navbar = () => {
         </div>
 
         {/* Right Side Navigation */}
-        <div className="hidden md:flex items-center gap-2">
+        <div className="hidden md:flex items-center gap-2 font-s-medium">
           {/* Leaderboard Button */}
           <Button
             variant="ghost"
             className="flex items-center gap-[5px] px-[16px] h-[50px] py-[14px] bg-[#F4F5EF] rounded-[99px] hover:bg-[#F4F5EF]/90"
           >
             <img src={icons.medal.src} className="w-[13px] h-[18px] text-[#2A9D8F]" alt="Medal" />
-            <span className="font-medium text-variable-collection-secondary-pure-green text-base">
+            <span className="font-medium  text-variable-collection-secondary-pure-green text-base">
               Leaderboard
             </span>
           </Button>

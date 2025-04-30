@@ -1,19 +1,12 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   Calendar,
   Clock,
-  Heart,
   Image as ImageIcon,
-  MoreVertical,
-  Share,
-  Users,
+  Users
 } from "lucide-react";
-import React from "react";
 import { icons } from "../../../public";
+import Info from "./info";
 
 export default function EventDetailsSection() {
   // Event details data
@@ -95,213 +88,30 @@ export default function EventDetailsSection() {
 
           {/* Tabs Navigation */}
           <Tabs defaultValue="info" className="w-full">
-            <TabsList className="w-full h-auto bg-transparent p-0 justify-between border-b-[1.6px] border-variable-collection-deep-light-gray-stroke">
-              <TabsTrigger
-                value="info"
-                className="flex-1 py-8 data-[state=active]:border-b-[1.6px] data-[state=active]:border-variable-collection-secondary-terra-cotta data-[state=active]:text-variable-collection-secondary-terra-cotta data-[state=active]:shadow-none font-medium text-2xl leading-5 font-['Satoshi-Medium',Helvetica]"
-              >
-                Info
-              </TabsTrigger>
-              <TabsTrigger
-                value="player"
-                className="flex-1 py-8 data-[state=active]:shadow-none font-medium text-2xl leading-5 font-['Satoshi-Medium',Helvetica]"
-              >
-                Player
-              </TabsTrigger>
-              <TabsTrigger
-                value="comments"
-                className="flex-1 py-8 data-[state=active]:shadow-none font-medium text-2xl leading-5 font-['Satoshi-Medium',Helvetica]"
-              >
-                Comments
-              </TabsTrigger>
+            <TabsList className="flex w-full h-auto p-0 bg-transparent">
+              {[
+                { id: "info", label: "Info", active: true },
+                { id: "player", label: "Player", active: false },
+                { id: "comments", label: "Comments", active: false },
+              ].map((tab) => (
+                <TabsTrigger
+                  key={tab.id}
+                  value={tab.id}
+                  className={`flex-1 py-8 rounded-none  border-b-variable-collection-deep-light-gray-stroke
+                     border-[1.6px] data-[state=active]:border-b-variable-collection-secondary-terra-cotta data-[state=active]:shadow-none ${tab.active
+                      ? "text-variable-collection-secondary-terra-cotta"
+                      : "text-variable-collection-tertiary-night-black"
+                    } font-s-medium font-medium text-2xl leading-5`}
+                >
+                  {tab.label}
+                </TabsTrigger>
+              ))}
             </TabsList>
+
 
             <TabsContent value="info" className="mt-0 p-0">
               {/* Tags Section */}
-              <div className="flex flex-wrap items-center gap-[8px_8px] px-0 py-[60px] border-b border-variable-collection-deep-light-gray-stroke">
-                <div className="flex flex-wrap items-start gap-[4px_40px] flex-1">
-                  <div className="flex flex-wrap items-center gap-[6px_12px] flex-1">
-                    {eventData.tags.map((tag, index) => (
-                      <Badge
-                        key={index}
-                        variant="outline"
-                        className={`px-6 py-5 ${tag.bgColor} border-none font-normal text-variable-collection-body text-2xl font-['Satoshi-Regular',Helvetica]`}
-                      >
-                        {tag.name}
-                      </Badge>
-                    ))}
-                  </div>
-
-                  <div className="inline-flex items-center gap-3 px-2.5 py-[5px]">
-                    <div className="relative w-10 h-10">
-                      <div className="inline-flex items-end gap-[0.8px] relative top-2 left-1.5">
-                        <div className="relative w-1.5 h-2 bg-variable-collection-primary-jithbo-green" />
-                        <div className="relative w-1.5 h-3.5 bg-variable-collection-difficulty-bar-s-default" />
-                        <div className="relative w-1.5 h-5 bg-variable-collection-difficulty-bar-s-default" />
-                        <div className="relative w-1.5 h-[26px] bg-variable-collection-difficulty-bar-s-default" />
-                      </div>
-                    </div>
-                    <div className="font-normal text-variable-collection-body text-2xl leading-10 mt-[-2px] font-['Satoshi-Regular',Helvetica]">
-                      Beginner
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* About Section */}
-              <div className="flex flex-col items-start gap-10 px-0 py-[60px] border-b border-variable-collection-deep-light-gray-stroke">
-                <h2 className="self-stretch h-7 mt-[-1px] font-bold text-variable-collection-tertiary-night-black text-[32px] leading-7 font-['Satoshi-Bold',Helvetica]">
-                  About this event
-                </h2>
-
-                <div className="flex flex-col items-start gap-3 self-stretch w-full">
-                  <p className="self-stretch h-[69px] mt-[-1px] font-normal text-variable-collection-tertiary-night-black text-base leading-6 font-['Satoshi-Regular',Helvetica]">
-                    {eventData.about}
-                  </p>
-
-                  <Button
-                    variant="link"
-                    className="h-[21px] p-0 font-normal text-variable-collection-primary-blue text-base leading-6 underline font-['Satoshi-Regular',Helvetica]"
-                  >
-                    Read more
-                  </Button>
-                </div>
-              </div>
-
-              {/* Location Section */}
-              <div className="flex flex-col items-start gap-10 px-0 py-[60px] border-b border-variable-collection-deep-light-gray-stroke">
-                <h2 className="mt-[-1px] font-bold text-variable-collection-tertiary-night-black text-[32px] leading-7 font-['Satoshi-Bold',Helvetica]">
-                  Location
-                </h2>
-
-                <div className="flex w-[720px] items-start gap-3">
-                  <div className="flex flex-col items-start gap-1 flex-1">
-                    <h3 className="mt-[-1px] font-bold text-variable-collection-secondary-gray-blue text-2xl leading-normal font-['Satoshi-Bold',Helvetica]">
-                      {eventData.location_details.name}
-                    </h3>
-                    <p className="self-stretch font-normal text-variable-collection-body text-lg leading-normal font-['Satoshi-Regular',Helvetica]">
-                      {eventData.location_details.address}
-                    </p>
-                  </div>
-
-                  <Button
-                    variant="outline"
-                    className="px-4 py-[15px] rounded-[99px] border-variable-collection-secondary-gray-blue font-medium text-variable-collection-secondary-gray-blue text-lg font-['Satoshi-Medium',Helvetica]"
-                  >
-                    Open maps
-                  </Button>
-                </div>
-              </div>
-
-              {/* Good to Know Section */}
-              <div className="flex flex-col items-start gap-8 px-0 py-[60px] border-b border-variable-collection-deep-light-gray-stroke">
-                <h2 className="mt-[-1px] font-bold text-variable-collection-tertiary-night-black text-[32px] leading-7 font-['Satoshi-Bold',Helvetica]">
-                  Good to know
-                </h2>
-
-                <div className="flex items-center gap-3 overflow-x-scroll">
-                  <Card className="w-[300px] h-[250px] bg-variable-collection-secondary-terra-cotta rounded-2xl border-none">
-                    <CardContent className="p-6">
-                      <h3 className="self-stretch mt-[-1px] font-bold text-variable-collection-offwhite text-2xl leading-normal font-['Satoshi-Bold',Helvetica] mb-4">
-                        Highlights
-                      </h3>
-                      <div className="flex flex-col items-start gap-[9px]">
-                        {eventData.highlights.map((item, index) => (
-                          <div
-                            key={index}
-                            className="flex items-center gap-2 self-stretch w-full"
-                          >
-                            {item.icon}
-                            <span className="font-medium text-variable-collection-offwhite text-lg leading-normal mt-[-1px] font-['Satoshi-Medium',Helvetica]">
-                              {item.text}
-                            </span>
-                          </div>
-                        ))}
-                      </div>
-                    </CardContent>
-                  </Card>
-
-                  <Card className="w-[300px] h-[250px] bg-variable-collection-secondary-pure-green rounded-2xl border-none">
-                    <CardContent className="p-6">
-                      <h3 className="self-stretch mt-[-1px] font-bold text-variable-collection-offwhite text-2xl leading-normal font-['Satoshi-Bold',Helvetica] mb-4">
-                        Refund & cancellation policy
-                      </h3>
-                      <div className="font-medium text-variable-collection-offwhite text-lg leading-normal font-['Satoshi-Medium',Helvetica]">
-                        {eventData.refundPolicy.map((item, index) => (
-                          <div key={index} className="flex items-start gap-2">
-                            <span>•</span>
-                            <span>{item}</span>
-                          </div>
-                        ))}
-                      </div>
-                      <div className="flex justify-end mt-4">
-                        <Button
-                          variant="link"
-                          className="p-0 font-normal text-variable-collection-main-BG-solid-white text-base leading-normal font-['Satoshi-Regular',Helvetica]"
-                        >
-                          Learn more
-                        </Button>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </div>
-              </div>
-
-              {/* Hosted By Section */}
-              <div className="flex flex-col items-start gap-8 px-0 py-[60px]">
-                <h2 className="mt-[-1px] font-bold text-variable-collection-tertiary-night-black text-[32px] leading-7 font-['Satoshi-Bold',Helvetica]">
-                  Hosted by
-                </h2>
-
-                <Card className="w-[720px] bg-variable-collection-secondary-gray-blue rounded-2xl border-none">
-                  <CardContent className="flex items-center justify-between p-6">
-                    <div className="flex items-center gap-6">
-                      <Avatar className="w-24 h-24">
-                        <AvatarImage src="/image-155.png" alt="Alex Mercer" />
-                        <AvatarFallback>AM</AvatarFallback>
-                      </Avatar>
-
-                      <div className="flex flex-col w-[141px] items-start gap-1.5">
-                        <h3 className="self-stretch mt-[-1px] font-bold text-variable-collection-solid-white text-2xl leading-[22px] font-['Satoshi-Bold',Helvetica]">
-                          {eventData.host.name}
-                        </h3>
-
-                        <div className="flex flex-col items-start">
-                          <div className="flex items-center gap-1 self-stretch w-full">
-                            <span className="w-6 mt-[-1px] font-medium text-variable-collection-solid-white text-base leading-[22px] font-['Satoshi-Medium',Helvetica]">
-                              {eventData.host.activitiesHosted}
-                            </span>
-                            <span className="mt-[-1px] font-normal text-variable-collection-tertiary-light-gray text-base leading-[22px] font-['Satoshi-Regular',Helvetica]">
-                              activities hosted
-                            </span>
-                          </div>
-
-                          <div className="flex items-center gap-1">
-                            <span className="w-6 mt-[-1px] font-medium text-variable-collection-solid-white text-base leading-[22px] font-['Satoshi-Medium',Helvetica]">
-                              {eventData.host.rating}
-                            </span>
-                            <span className="mt-[-1px] font-normal text-variable-collection-tertiary-light-gray text-base leading-[22px] font-['Satoshi-Regular',Helvetica]">
-                              host rating
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="flex w-[296px] h-[42px] items-center gap-4">
-                      <Button className="flex-1 bg-variable-collection-tertiary-light-apricot text-variable-collection-tertiary-night-black rounded-[99px] font-medium text-base leading-[22px] font-['Satoshi-Medium',Helvetica]">
-                        Message
-                      </Button>
-                      <Button
-                        variant="outline"
-                        className="flex-1 border-variable-collection-tertiary-light-apricot text-variable-collection-tertiary-light-apricot rounded-[99px] font-medium text-base leading-[22px] font-['Satoshi-Medium',Helvetica]"
-                      >
-                        View profile
-                      </Button>
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
+              <Info />
             </TabsContent>
           </Tabs>
         </div>
@@ -311,9 +121,9 @@ export default function EventDetailsSection() {
           <div className="self-stretch  flex flex-col justify-start items-start gap-2.5">
             <div className="self-stretch px-4 py-[18px] bg-white/0 rounded-2xl  outline-1 outline-offset-[-1px] outline-neutral-200 inline-flex justify-between items-center overflow-hidden">
               <div className="flex-1 flex justify-between items-center">
-                <div className="text-center justify-start text-[#da6049] text-base font-medium font-s-medium">6 spots left</div>
+                <p className="text-center justify-start text-[#da6049] text-base font-medium font-s-medium">6 spots left</p>
                 <div className="size- flex justify-start items-center gap-1">
-                  <div className="justify-start"><span className="text-neutral-900 text-lg font-bold font-s-medium">320tk /player </span><span className="text-[#808080] text-sm font-normal font-s-regular">(both)</span></div>
+                  <p className="justify-start"><span className="text-neutral-900 text-lg font-bold font-s-medium">320tk /player </span><span className="text-[#808080] text-sm font-normal font-s-regular">(both)</span></p>
                 </div>
               </div>
             </div>
