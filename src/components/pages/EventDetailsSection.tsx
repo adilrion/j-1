@@ -7,6 +7,7 @@ import {
 } from "lucide-react";
 import { icons } from "../../../public";
 import Info from "./info";
+import Players from "./players";
 
 export default function EventDetailsSection() {
 
@@ -64,6 +65,9 @@ export default function EventDetailsSection() {
             <TabsContent value="info" className="mt-0 p-0">
               {/* Tags Section */}
               <Info />
+            </TabsContent>
+            <TabsContent value="player" className="mt-0 p-0">
+              <Players />
             </TabsContent>
           </Tabs>
         </div>

@@ -7,6 +7,7 @@ import search from "./search.svg";
 import favorite from "./favorite.svg";
 import share from "./share.svg";
 import three_dots from "./three-dot.svg";
+import peoples from "./peoples.svg";
 
 import calender2 from "./calender-white.svg";
 import clock from "./clock.svg";
@@ -39,4 +40,5 @@ export const icons = {
     s2,
     s3,
     taka,
+    peoples,
 };
