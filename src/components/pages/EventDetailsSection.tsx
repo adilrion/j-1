@@ -1,19 +1,17 @@
+'use client';
+
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import {
-  Calendar,
-  Clock,
-  Image as ImageIcon,
-  Users
-} from "lucide-react";
+
+import { useState } from "react";
 import { icons } from "../../../public";
+import ChatComponent from "./comments";
 import Info from "./info";
 import Players from "./players";
-import Comments from "./comments";
-import ChatComponent from "./comments";
+import Popup from "./popup";
 
 export default function EventDetailsSection() {
 
-
+  const [open, setOpen] = useState(false);
   return (
     <div className="flex flex-col items-start gap-2.5 pt-10 pb-0   relative self-stretch w-full">
       <div className="flex items-start gap-[60px] relative self-stretch w-full">
@@ -89,11 +87,12 @@ export default function EventDetailsSection() {
               </div>
             </div>
           </div>
-          <div className="self-stretch p-4 bg-[#63cfa0] rounded-[99px] inline-flex justify-center items-center gap-2.5">
+          <div onClick={() => setOpen(!open)} className="self-stretch p-4 bg-[#63cfa0] rounded-[99px] inline-flex justify-center items-center gap-2.5">
             <div className="text-center justify-center text-neutral-900 text-lg font-bold font-s-bold tracking-tight">Join event</div>
           </div>
         </div>
       </div>
+      <Popup open={open} setOpen={setOpen} />
     </div>
   );
 }

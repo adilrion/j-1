@@ -5,23 +5,28 @@ import people from "./people.svg";
 import search from "./search.svg";
 
 import favorite from "./favorite.svg";
+import peoples from "./peoples.svg";
 import share from "./share.svg";
 import three_dots from "./three-dot.svg";
-import peoples from "./peoples.svg";
 
 import calender2 from "./calender-white.svg";
 import clock from "./clock.svg";
 import venue from "./venue.svg";
 
+import cornerUpRight from "./corner-up-right.svg";
+import location from "./location.svg";
+import man from "./man.png";
+import taka from "./taka.svg";
 
-import man from './man.png'
-import location from './location.svg'
-import taka from './taka.svg'
-import cornerUpRight from './corner-up-right.svg'
+import s1 from "./s-1.png";
+import s2 from "./s2.png";
+import s3 from "./s3.png";
 
-import s1 from './s-1.png'
-import s2 from './s2.png'
-import s3 from './s3.png'
+import bkash from "./arcticons_bkash.svg";
+import payment from "./tdesign_money-filled.svg";
+import cash from "./hugeicons_payment-02.svg";
+
+import x from "./x.svg";
 
 export const icons = {
     logo,
@@ -42,5 +47,9 @@ export const icons = {
     s3,
     taka,
     peoples,
-    cornerUpRight
+    cornerUpRight,
+    bkash,
+    cash,
+    x,
+    payment,
 };
