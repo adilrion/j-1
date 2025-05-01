@@ -28,6 +28,9 @@ import cash from "./hugeicons_payment-02.svg";
 
 import x from "./x.svg";
 
+// gallery
+import g1 from "./gallery/f1.png";
+
 export const icons = {
     logo,
     medal,
@@ -52,4 +55,5 @@ export const icons = {
     cash,
     x,
     payment,
+    g1,
 };
