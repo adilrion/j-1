@@ -17,6 +17,7 @@ import venue from "./venue.svg";
 import man from './man.png'
 import location from './location.svg'
 import taka from './taka.svg'
+import cornerUpRight from './corner-up-right.svg'
 
 import s1 from './s-1.png'
 import s2 from './s2.png'
@@ -41,4 +42,5 @@ export const icons = {
     s3,
     taka,
     peoples,
+    cornerUpRight
 };

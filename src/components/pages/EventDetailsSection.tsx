@@ -8,6 +8,8 @@ import {
 import { icons } from "../../../public";
 import Info from "./info";
 import Players from "./players";
+import Comments from "./comments";
+import ChatComponent from "./comments";
 
 export default function EventDetailsSection() {
 
@@ -68,6 +70,9 @@ export default function EventDetailsSection() {
             </TabsContent>
             <TabsContent value="player" className="mt-0 p-0">
               <Players />
+            </TabsContent>
+            <TabsContent value="comments" className="mt-0 p-0">
+              <ChatComponent />
             </TabsContent>
           </Tabs>
         </div>
